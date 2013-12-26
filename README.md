@@ -7,8 +7,6 @@ A shell like echo for node.js
 
 #### echo to `std*`
 
-The `{something}` can be anything that `console.{log|error}` support
-
 1. echo to `stdout`
 
         var echo = require('node-echo');
@@ -20,8 +18,6 @@ The `{something}` can be anything that `console.{log|error}` support
         echo({something}, echo.STDERR);
 
 #### echo to `local file`
-
-The `{something}` can be an `object`, an `array`, a `function` or a `string`
 
 1. append to local file like shell's `echo 'content' >> test.txt`
 

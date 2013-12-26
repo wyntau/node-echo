@@ -1,5 +1,6 @@
-fs = require 'fs'
+fs     = require 'fs'
 mkdirp = require 'mkdirp'
+util   = require './util'
 
 echo = (content, flag = '__stdout__', file = '')->
     if flag is '__stdout__' and file is '' # echo to stdout
@@ -8,12 +9,11 @@ echo = (content, flag = '__stdout__', file = '')->
         console.error content
     else if (flag is '>' or flag is '>>') and file isnt '' # create new file or append to file
         # 判断content类型
-        if typeof content is 'object'
-            content = JSON.stringify content
-        if typeof content is 'function'
-            content = content.toString()
-        if typeof content isnt 'string'
-            throw new Error 'type not supported!'
+        switch util.type(content)
+            when '[object Object]', '[object Array]'
+                content = JSON.stringify content
+            else
+                content = String content
 
         if file.indexOf('/') is -1 # no dirname specific
             if flag is '>'
