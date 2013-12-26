@@ -1,7 +1,7 @@
-echo = require '..'
-fs = require 'fs'
+echo    = require '..'
+fs      = require 'fs'
 testStr = 'testStr'
-dir = 'testdir'
+dir     = 'testdir'
 
 describe 'echo', ->
 
