@@ -5,7 +5,7 @@ dir = 'testdir'
 
 describe 'echo', ->
 
-    describe 'echo to current dir', ->
+    describe 'echo to current dir file', ->
         file = 'test.txt'
         it 'create', ->
             echo testStr, '>', file
@@ -105,7 +105,7 @@ describe 'echo', ->
 
             fs.unlinkSync file
 
-    describe 'echo to subdir', ->
+    describe 'echo to subdir file', ->
         file = "#{dir}/test.txt"
 
         after ->
@@ -210,8 +210,27 @@ describe 'echo', ->
             fs.unlinkSync file
 
     describe 'echo to std*', ->
+
         it 'echo to stdout', ->
+            log = console.log
+            console.log = sinon.spy()
+
             echo testStr
 
+            console.log.should.have.been.callOnce
+            console.log.should.have.been.calledWith testStr
+
+            echo testStr, echo.STDOUT
+            console.log.should.have.been.callTwice
+
+            console.log = log
+
         it 'echo to stderr', ->
+            err = console.error
+            console.error = sinon.spy()
+
             echo testStr, echo.STDERR
+
+            console.error.should.have.been.calledWith testStr
+
+            console.error = err
