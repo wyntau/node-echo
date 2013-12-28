@@ -1,4 +1,4 @@
-class Util
+class module.exports
     @isString: (obj)->
         Object::toString.call obj is '[object String]'
 
@@ -34,5 +34,3 @@ class Util
 
     @type: (obj)->
         Object::toString.call obj
-
-module.exports = Util
