@@ -2,6 +2,12 @@ fs     = require 'fs'
 mkdirp = require 'mkdirp'
 util   = require './util'
 
+stringify = (content)->
+    switch util.type(content)
+        when '[object Object]', '[object Array]'
+            JSON.stringify content
+        else
+            String content
 
 echo = (args...)->
     switch args.length
@@ -9,7 +15,7 @@ echo = (args...)->
             return
         when 1 # echo to stdout without callback
             console.log args[0]
-        when 2 # echo to stdout with a callback
+        when 2 # echo to stdout or stderr without a callback
             [content, output] = args
             if output is '__stderr__'
                 console.error content
@@ -25,11 +31,7 @@ echo = (args...)->
         when 4 # echo to local file with a callback
             [content, flag, file, callback] = args
 
-            switch util.type(content)
-                when '[object Object]', '[object Array]'
-                    content = JSON.stringify content
-                else
-                    content = String content
+            content = stringify content
 
             flag or= '>>'
 
@@ -54,24 +56,12 @@ echo = (args...)->
 
 echo.sync = (args...)->
     switch args.length
-        when 0
-            return
-        when 1 # echo to stdout
-            console.log args[0]
-        when 2 # echo to stdout or stderr
-            [content, output] = args
-            if output is '__stderr__'
-                console.error content
-            else
-                console.log content
+        when 0, 1, 2
+            echo args...
         when 3 # echo to local file
             [content, flag, file] = args
 
-            switch util.type(content)
-                when '[object Object]', '[object Array]'
-                    content = JSON.stringify content
-                else
-                    content = String content
+            content = stringify content
 
             flag or= '>>'
 
