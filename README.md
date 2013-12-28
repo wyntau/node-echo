@@ -8,19 +8,23 @@ A shell like echo for node.js with sync and async method
     echo = require('echo');
     echo(args...);
 
-#### echo(anything[, echo.STDOUT|STDERR[, callback]])
+### to `stdout` or `stderr`
+
+##### echo(anything[, echo.STDOUT|STDERR[, callback]])
 echo anything to `stdout` or `stderr`, with or without a callback
 
-#### echo(anything, flag, fileName, callback)
+##### echo.sync(anything[, echo.STDOUT|STDERR])
+sync version, echo anything to `stdout` or `stderr`
+
+### to local file
+
+##### echo(anything, flag, fileName, callback)
 echo anything to localfile.
 
 flag can be `>` or `>>`, and its default to `>>`, so echo default likes shell's
 `echo 'content' >> file`
 
-#### echo.sync(anything[, echo.STDOUT|STDERR])
-sync version, echo anything to `stdout` or `stderr`
-
-#### echo.sync(anything, flag, fileName)
+##### echo.sync(anything, flag, fileName)
 sync version, echo anything to localfile.
 
 flag can be `>` or `>>`, and its default to `>>`, so echo default likes shell's
