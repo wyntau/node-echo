@@ -10,9 +10,11 @@ echo = (args...)->
         when 1 # echo to stdout without callback
             console.log args[0]
         when 2 # echo to stdout with a callback
-            [content, callback] = args
-            console.log content
-            callback null
+            [content, output] = args
+            if output is '__stderr__'
+                console.error content
+            else
+                console.log content
         when 3 # echo to stdout or stderr with a callback
             [content, output, callback] = args
             if output is '__stderr__'

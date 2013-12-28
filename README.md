@@ -1,40 +1,37 @@
-## node-echo
+# node-echo
 
 
-A shell like echo for node.js
+A shell like echo for node.js with sync and async method
 
-### Usage:
+## Usage:
 
-#### echo to `std*`
+    echo = require('echo');
+    echo(args...);
 
-1. echo to `stdout`
+#### echo(anything[, echo.STDOUT|STDERR[, callback]])
+echo anything to `stdout` or `stderr`, with or without a callback
 
-        var echo = require('node-echo');
-        echo({something}[, echo.STDOUT]);
+#### echo(anything, flag, fileName, callback)
+echo anything to localfile.
 
-2. echo to `stderr`
+flag can be `>` or `>>`, and its default to `>>`, so echo default likes shell's
+`echo 'content' >> file`
 
-        var echo = require('node-echo');
-        echo({something}, echo.STDERR);
+#### echo.sync(anything[, echo.STDOUT|STDERR])
+sync version, echo anything to `stdout` or `stderr`
 
-#### echo to `local file`
+#### echo.sync(anything, flag, fileName)
+sync version, echo anything to localfile.
 
-1. append to local file like shell's `echo 'content' >> test.txt`
+flag can be `>` or `>>`, and its default to `>>`, so echo default likes shell's
+`echo 'content' >> file`
 
-        var echo = require('node-echo');
-        echo({something}, '>>', {fileName});
-
-2. replace local file like shell's `echo 'content' > test.txt`
-
-        var echo = require('node-echo');
-        echo({something}, '>', {fineName});
-
-### Test:
+## Test:
 
     npm install
     npm test
 
-### License
+## License
 
 The MIT License (MIT)
 
