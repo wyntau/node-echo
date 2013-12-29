@@ -184,8 +184,8 @@ describe 'echo()', ->
                 func2 = eval "(#{data})"
                 func2().should.to.equal 'func'
                 cbk()
-            # (cbk)->
-            #     fs.unlink file, cbk
+            (cbk)->
+                fs.unlink file, cbk
             ->
                 fs.rmdir dir, done
         ]
