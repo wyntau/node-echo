@@ -239,7 +239,7 @@ describe 'echo.sync()', ->
                 encoding: 'utf8'
             data.should.to.equal str
 
-            fs.unlink file
+            fs.unlinksync file
             fs.rmdirSync dir
 
         it 'create then append', ->
