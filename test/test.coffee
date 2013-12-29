@@ -4,7 +4,7 @@ async   = require 'async'
 
 str = 'testStr'
 dir = 'testDir'
-file = 'test.txt'
+file = "#{dir}/test.txt"
 
 describe 'echo()', ->
     describe 'to std*', ->
@@ -61,8 +61,10 @@ describe 'echo()', ->
                 (data, cbk)->
                     data.should.to.equal str
                     cbk()
+                (cbk)->
+                    fs.unlink file, cbk
                 ->
-                    fs.unlink file, done
+                    fs.rmdir dir, done
             ]
 
         it 'append new file', (done)->
@@ -76,8 +78,10 @@ describe 'echo()', ->
                 (data, cbk)->
                     data.should.to.equal str
                     cbk()
+                (cbk)->
+                    fs.unlink file, cbk
                 ->
-                    fs.unlink file, done
+                    fs.rmdir dir, done
             ]
 
         it 'create then append', (done)->
@@ -100,8 +104,10 @@ describe 'echo()', ->
                 (data, cbk)->
                     data.should.to.equal str + '\n' + str
                     cbk()
+                (cbk)->
+                    fs.unlink file, cbk
                 ->
-                    fs.unlink file, done
+                    fs.rmdir dir, done
             ]
 
         it 'append then create', (done)->
@@ -124,8 +130,66 @@ describe 'echo()', ->
                 (data, cbk)->
                     data.should.to.equal str
                     cbk()
+                (cbk)->
+                    fs.unlink file, cbk
                 ->
-                    fs.unlink file, done
+                    fs.rmdir dir, done
+            ]
+
+        it 'echo Object', (done)->
+            obj = {str: true}
+            async.waterfall [
+                (cbk)->
+                    echo obj, '>', file, cbk
+                (cbk)->
+                    fs.readFile file,
+                        encoding: 'utf8'
+                    , cbk
+                (data, cbk)->
+                    JSON.parse(data).should.to.deep.equal obj
+                    cbk()
+                (cbk)->
+                    fs.unlink file, cbk
+                ->
+                    fs.rmdir dir, done
+            ]
+
+        it 'echo Array', (done)->
+            arr = [1, 2, 3, 4]
+            async.waterfall [
+                (cbk)->
+                    echo arr, '>', file, cbk
+                (cbk)->
+                    fs.readFile file,
+                        encoding: 'utf8'
+                    , cbk
+                (data, cbk)->
+                    JSON.parse(data).should.to.deep.equal arr
+                    cbk()
+                (cbk)->
+                    fs.unlink file, cbk
+                ->
+                    fs.rmdir dir, done
+            ]
+
+        it 'echo Function', ->
+            func = ->
+                'func'
+            async.waterfall [
+                (cbk)->
+                    echo func, '>', file, cbk
+                (cbk)->
+                    fs.readFile file,
+                        encoding: 'utf8'
+                    , cbk
+                (data, cbk)->
+                    func2 = eval "(#{data})"
+                    func2().should.to.equal 'func'
+                    cbk()
+                (cbk)->
+                    fs.unlink file, cbk
+                ->
+                    fs.rmdir dir, done
             ]
 
 describe 'echo.sync()', ->
@@ -157,3 +221,100 @@ describe 'echo.sync()', ->
             console.error = err
 
     describe 'to local file', ->
+        it 'create new file', ->
+            echo.sync str, '>', file
+
+            data = fs.readFileSync file,
+                encoding: 'utf8'
+
+            data.should.to.equal str
+
+            fs.unlinkSync file
+            fs.rmdirSync dir
+
+        it 'append new file', ->
+            echo.sync str, '>>', file
+
+            data = fs.readFileSync file,
+                encoding: 'utf8'
+            data.should.to.equal str
+
+            fs.unlink file
+            fs.rmdirSync dir
+
+        it 'create then append', ->
+            echo.sync str, '>', file
+
+            data = fs.readFileSync file,
+                encoding: 'utf8'
+
+            data.should.to.equal str
+
+            echo.sync str, '>>', file
+
+            data = fs.readFileSync file,
+                encoding: 'utf8'
+
+            data.should.to.equal str + '\n' + str
+
+            fs.unlinkSync file
+            fs.rmdirSync dir
+
+        it 'append then create', ->
+            echo.sync str, '>>', file
+            data = fs.readFileSync file,
+                encoding: 'utf8'
+
+            data.should.to.equal str
+
+            echo.sync str, '>', file
+
+            data = fs.readFileSync file,
+                encoding: 'utf8'
+
+            data.should.to.equal str
+
+            fs.unlinkSync file
+            fs.rmdirSync dir
+
+        it 'echo Object', ->
+            obj = {str: true}
+
+            echo.sync obj, '>', file
+
+            data = fs.readFileSync file,
+                encoding: 'utf8'
+
+            JSON.parse(data).should.to.deep.equal obj
+
+            fs.unlinkSync file
+            fs.rmdirSync dir
+
+        it 'echo Array', ->
+            arr = [1, 2, 3, 4]
+
+            echo.sync arr, '>', file
+
+            data = fs.readFileSync file,
+                encoding: 'utf8'
+
+            JSON.parse(data).should.to.deep.equal arr
+
+            fs.unlinkSync file
+            fs.rmdirSync dir
+
+        it 'echo Function', ->
+            func = ->
+                'func'
+
+            echo.sync func, '>', file
+
+            data = fs.readFileSync file,
+                encoding: 'utf8'
+
+            func2 = eval "(#{data})"
+
+            func2().should.to.equal 'func'
+
+            fs.unlinkSync file
+            fs.rmdirSync dir
