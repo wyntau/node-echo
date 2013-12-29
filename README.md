@@ -1,7 +1,8 @@
-# node-echo
-
+# node-echo [![NPM version](https://badge.fury.io/js/node-echo.png)](http://badge.fury.io/js/node-echo) [![Build Status](https://travis-ci.org/Jeremial/node-echo.png)](https://travis-ci.org/Jeremial/node-echo) [![Dependencies Status](https://david-dm.org/Jeremial/node-echo.png)](https://david-dm.org/Jeremial/node-echo)
 
 A shell like echo for node.js with sync and async method
+
+[![node-echo](https://nodei.co/npm/node-echo.png?compact=true)](https://nodei.co/npm/node-echo)
 
 ## Usage:
 

@@ -8,7 +8,8 @@
   },
   "keywords": [
     "echo",
-    "shell"
+    "shell",
+    "node"
   ],
   "author": "Jeremial",
   "license": "MIT",
