@@ -170,7 +170,7 @@ describe 'echo()', ->
                 fs.rmdir dir, done
         ]
 
-    it 'echo Function', ->
+    it 'echo Function', (done)->
         func = ->
             'func'
         async.waterfall [

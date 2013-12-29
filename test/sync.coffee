@@ -6,7 +6,7 @@ dir = 'testDir'
 file = "#{dir}/test.txt"
 
 describe 'echo.sync()', ->
-    it 'sync onearg', ->
+    it 'one arg', ->
         log = console.log
         console.log = sinon.spy()
         echo.sync str
@@ -15,7 +15,7 @@ describe 'echo.sync()', ->
 
         console.log = log
 
-    it 'sync twoarg', ->
+    it 'two arg', ->
         log = console.log
         err = console.error
 
@@ -32,7 +32,7 @@ describe 'echo.sync()', ->
         console.log = log
         console.error = err
 
-    it 'sync create new file', ->
+    it 'create new file', ->
         echo.sync str, '>', file
 
         data = fs.readFileSync file,
@@ -43,7 +43,7 @@ describe 'echo.sync()', ->
         fs.unlinkSync file
         fs.rmdirSync dir
 
-    it 'sync append new file', ->
+    it 'append new file', ->
         echo.sync str, '>>', file
 
         data = fs.readFileSync file,
@@ -53,7 +53,7 @@ describe 'echo.sync()', ->
         fs.unlinkSync file
         fs.rmdirSync dir
 
-    it 'sync create then append', ->
+    it 'create then append', ->
         echo.sync str, '>', file
 
         data = fs.readFileSync file,
@@ -71,7 +71,7 @@ describe 'echo.sync()', ->
         fs.unlinkSync file
         fs.rmdirSync dir
 
-    it 'sync append then create', ->
+    it 'append then create', ->
         echo.sync str, '>>', file
         data = fs.readFileSync file,
             encoding: 'utf8'
@@ -88,7 +88,7 @@ describe 'echo.sync()', ->
         fs.unlinkSync file
         fs.rmdirSync dir
 
-    it 'sync echo Object', ->
+    it 'echo Object', ->
         obj = {str: true}
 
         echo.sync obj, '>', file
@@ -101,7 +101,7 @@ describe 'echo.sync()', ->
         fs.unlinkSync file
         fs.rmdirSync dir
 
-    it 'sync echo Array', ->
+    it 'echo Array', ->
         arr = [1, 2, 3, 4]
 
         echo.sync arr, '>', file
@@ -114,7 +114,7 @@ describe 'echo.sync()', ->
         fs.unlinkSync file
         fs.rmdirSync dir
 
-    it 'sync echo Function', ->
+    it 'echo Function', ->
         func = ->
             'func'
 
