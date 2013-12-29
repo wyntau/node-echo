@@ -1,9 +1,9 @@
-echo    = require '..'
-fs      = require 'fs'
-async   = require 'async'
+echo  = require '..'
+fs    = require 'fs'
+async = require 'async'
 
-str = 'testStr'
-dir = 'testDir'
+str  = 'testStr'
+dir  = 'testDir'
 file = "#{dir}/test.txt"
 
 describe 'echo()', ->

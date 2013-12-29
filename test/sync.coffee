@@ -1,8 +1,8 @@
-echo    = require '..'
-fs      = require 'fs'
+echo = require '..'
+fs   = require 'fs'
 
-str = 'testStr'
-dir = 'testDir'
+str  = 'testStr'
+dir  = 'testDir'
 file = "#{dir}/test.txt"
 
 describe 'echo.sync()', ->
