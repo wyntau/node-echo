@@ -6,8 +6,9 @@ A shell like echo for node.js with sync and async method
 
 ## Usage:
 
-    echo = require('echo');
+    var echo = require('node-echo');
     echo(args...);
+    // echo.sync(args...);
 
 ### to `stdout` or `stderr`
 
