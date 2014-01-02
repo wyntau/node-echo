@@ -38,7 +38,7 @@ describe 'echo.sync()', ->
         data = fs.readFileSync file,
             encoding: 'utf8'
 
-        data.should.to.equal str
+        data.should.equal str
 
         fs.unlinkSync file
         fs.rmdirSync dir
@@ -48,7 +48,7 @@ describe 'echo.sync()', ->
 
         data = fs.readFileSync file,
             encoding: 'utf8'
-        data.should.to.equal str
+        data.should.equal str
 
         fs.unlinkSync file
         fs.rmdirSync dir
@@ -59,14 +59,14 @@ describe 'echo.sync()', ->
         data = fs.readFileSync file,
             encoding: 'utf8'
 
-        data.should.to.equal str
+        data.should.equal str
 
         echo.sync str, '>>', file
 
         data = fs.readFileSync file,
             encoding: 'utf8'
 
-        data.should.to.equal str + '\n' + str
+        data.should.equal str + '\n' + str
 
         fs.unlinkSync file
         fs.rmdirSync dir
@@ -76,14 +76,14 @@ describe 'echo.sync()', ->
         data = fs.readFileSync file,
             encoding: 'utf8'
 
-        data.should.to.equal str
+        data.should.equal str
 
         echo.sync str, '>', file
 
         data = fs.readFileSync file,
             encoding: 'utf8'
 
-        data.should.to.equal str
+        data.should.equal str
 
         fs.unlinkSync file
         fs.rmdirSync dir
@@ -96,7 +96,7 @@ describe 'echo.sync()', ->
         data = fs.readFileSync file,
             encoding: 'utf8'
 
-        JSON.parse(data).should.to.deep.equal obj
+        JSON.parse(data).should.deep.equal obj
 
         fs.unlinkSync file
         fs.rmdirSync dir
@@ -109,7 +109,7 @@ describe 'echo.sync()', ->
         data = fs.readFileSync file,
             encoding: 'utf8'
 
-        JSON.parse(data).should.to.deep.equal arr
+        JSON.parse(data).should.deep.equal arr
 
         fs.unlinkSync file
         fs.rmdirSync dir
@@ -125,7 +125,7 @@ describe 'echo.sync()', ->
 
         func2 = eval "(#{data})"
 
-        func2().should.to.equal 'func'
+        func2().should.equal 'func'
 
         fs.unlinkSync file
         fs.rmdirSync dir

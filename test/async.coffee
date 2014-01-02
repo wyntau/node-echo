@@ -57,7 +57,7 @@ describe 'echo()', ->
                     encoding: 'utf8'
                 , cbk
             (data, cbk)->
-                data.should.to.equal str
+                data.should.equal str
                 cbk()
             (cbk)->
                 fs.unlink file, cbk
@@ -74,7 +74,7 @@ describe 'echo()', ->
                     encoding: 'utf8'
                 , cbk
             (data, cbk)->
-                data.should.to.equal str
+                data.should.equal str
                 cbk()
             (cbk)->
                 fs.unlink file, cbk
@@ -91,7 +91,7 @@ describe 'echo()', ->
                     encoding: 'utf8'
                 , cbk
             (data, cbk)->
-                data.should.to.equal str
+                data.should.equal str
                 cbk()
             (cbk)->
                 echo str, '>>', file, cbk
@@ -100,7 +100,7 @@ describe 'echo()', ->
                     encoding: 'utf8'
                 , cbk
             (data, cbk)->
-                data.should.to.equal str + '\n' + str
+                data.should.equal str + '\n' + str
                 cbk()
             (cbk)->
                 fs.unlink file, cbk
@@ -117,7 +117,7 @@ describe 'echo()', ->
                     encoding: 'utf8'
                 , cbk
             (data, cbk)->
-                data.should.to.equal str
+                data.should.equal str
                 cbk()
             (cbk)->
                 echo str, '>', file, cbk
@@ -126,7 +126,7 @@ describe 'echo()', ->
                     encoding: 'utf8'
                 , cbk
             (data, cbk)->
-                data.should.to.equal str
+                data.should.equal str
                 cbk()
             (cbk)->
                 fs.unlink file, cbk
@@ -144,7 +144,7 @@ describe 'echo()', ->
                     encoding: 'utf8'
                 , cbk
             (data, cbk)->
-                JSON.parse(data).should.to.deep.equal obj
+                JSON.parse(data).should.deep.equal obj
                 cbk()
             (cbk)->
                 fs.unlink file, cbk
@@ -162,7 +162,7 @@ describe 'echo()', ->
                     encoding: 'utf8'
                 , cbk
             (data, cbk)->
-                JSON.parse(data).should.to.deep.equal arr
+                JSON.parse(data).should.deep.equal arr
                 cbk()
             (cbk)->
                 fs.unlink file, cbk
@@ -182,7 +182,7 @@ describe 'echo()', ->
                 , cbk
             (data, cbk)->
                 func2 = eval "(#{data})"
-                func2().should.to.equal 'func'
+                func2().should.equal 'func'
                 cbk()
             (cbk)->
                 fs.unlink file, cbk
