@@ -1,36 +1,38 @@
+getType = (obj) ->
+    Object::toString.call obj
+
 class module.exports
     @isString: (obj)->
-        Object::toString.call obj is '[object String]'
+        getType obj is '[object String]'
 
     @isArray: (obj)->
-        Object::toString.call obj is '[object Array]'
+        getType obj is '[object Array]'
 
     @isRegExp: (obj)->
-        Object::toString.call obj is '[object RegExp]'
+        getType obj is '[object RegExp]'
 
     @isNumber: (obj)->
-        Object::toString.call obj is '[object Number]'
+        getType obj is '[object Number]'
 
     @isObject: (obj)->
-        Object::toString.call obj is '[object Object]'
+        getType obj is '[object Object]'
 
     @isFunction: (obj)->
-        Object::toString.call obj is '[object Function]'
+        getType obj is '[object Function]'
 
     @isBoolean: (obj)->
-        Object::toString.call obj is '[object Boolean]'
+        getType obj is '[object Boolean]'
 
     @isUndefined: (obj)->
-        Object::toString.call obj is '[object Undefined]'
+        getType obj is '[object Undefined]'
 
     @isNull: (obj)->
-        Object::toString.call obj is '[object Null]'
+        getType obj is '[object Null]'
 
     @isDate: (obj)->
-        Object::toString.call obj is '[object Date]'
+        getType obj is '[object Date]'
 
     @isGlobal: (obj)->
-        Object::toString.call obj is '[object global]'
+        getType obj is '[object global]'
 
-    @type: (obj)->
-        Object::toString.call obj
+    @type: getType
