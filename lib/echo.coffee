@@ -1,6 +1,6 @@
 fs     = require 'fs'
 mkdirp = require 'mkdirp'
-util   = require './util'
+util   = require 'jistype'
 
 stringify = (content)->
     switch util.type(content)
