@@ -1,6 +1,6 @@
 {
   "name": "node-echo",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "a shell like echo for node.js",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "shell",
     "node"
   ],
-  "author": "Jeremial",
+  "author": "Treri",
   "license": "MIT",
   "dependencies": {
     "coffee-script": "~1.7.1",
@@ -20,12 +20,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Jeremial/node-echo"
+    "url": "https://github.com/Treri/node-echo"
   },
   "bugs": {
-    "url": "https://github.com/Jeremial/node-echo/issues"
+    "url": "https://github.com/Treri/node-echo/issues"
   },
-  "homepage": "https://github.com/Jeremial/node-echo",
+  "homepage": "https://github.com/Treri/node-echo",
   "devDependencies": {
     "mocha": "~1.16.2",
     "chai": "~1.8.1",
