@@ -1,4 +1,4 @@
-# node-echo [![NPM version](https://badge.fury.io/js/node-echo.png)](http://badge.fury.io/js/node-echo) [![Build Status](https://travis-ci.org/Jeremial/node-echo.png)](https://travis-ci.org/Jeremial/node-echo) [![Dependencies Status](https://david-dm.org/Jeremial/node-echo.png)](https://david-dm.org/Jeremial/node-echo)
+# node-echo [![NPM version](https://badge.fury.io/js/node-echo.png)](http://badge.fury.io/js/node-echo) [![Build Status](https://travis-ci.org/Treri/node-echo.png)](https://travis-ci.org/Treri/node-echo) [![Dependencies Status](https://david-dm.org/Treri/node-echo.png)](https://david-dm.org/Treri/node-echo)
 
 A shell like echo for node.js with sync and async method
 
@@ -41,7 +41,7 @@ flag can be `>` or `>>`, and its default to `>>`, so echo default likes shell's
 
 The MIT License (MIT)
 
-Copyright (c) 2013 Jeremial jeremial90@gmail.com
+Copyright (c) 2013 Treri treri.liu@gmail.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
